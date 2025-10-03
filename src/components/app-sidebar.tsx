@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 
 import { SearchForm } from "@/components/search-form";
@@ -15,6 +16,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { VersionSwitcher } from "@/components/version-switcher";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NavUser } from "./nav-user";
 
 const user = {
@@ -29,44 +32,44 @@ const data = {
   navMain: [
     {
       title: "Setup",
-      url: "#",
+      url: "/dashboard",
       items: [
         {
           title: "Business Settings",
-          url: "dashboard/business-settings",
+          url: "/business-settings",
           isActive: true,
         },
         {
           title: "Publish Console",
-          url: "#",
+          url: "/publish-console",
         },
       ],
     },
     {
       title: "Project",
-      url: "#",
+      url: "/dashboard/project",
       items: [
         {
           title: "Content Plan",
-          url: "#",
+          url: "/content-plan",
         },
         {
           title: "All Content",
-          url: "#",
+          url: "/all-content",
         },
         {
           title: "All Backlinks",
-          url: "#",
+          url: "/all-backlinks",
         },
         {
           title: "Settings",
-          url: "#",
+          url: "/settings",
         },
       ],
     },
     {
       title: "Account",
-      url: "#",
+      url: "/dashboard/account",
       items: [
         {
           title: "Billing",
@@ -78,6 +81,7 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathName = usePathname();
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -88,22 +92,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SearchForm />
       </SidebarHeader>
       <SidebarContent>
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
+        {data.navMain.map((item) => {
+          const groupUrl = `${item.url}`;
+          return (
+            <SidebarGroup key={item.title}>
+              <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {item.items.map((item) => {
+                    const fullUrl = `${groupUrl}${item.url}`;
+                    return (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={pathName === fullUrl}
+                        >
+                          <Link href={`${groupUrl}${item.url}`}>
+                            {item.title}
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    );
+                  })}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          );
+        })}
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>

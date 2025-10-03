@@ -52,7 +52,7 @@ export default function BusinessSettings() {
       ],
     },
     {
-      title: "Key Features",
+      title: "Keywords",
       editBtnUrl: "#",
       content: [
         {
@@ -72,7 +72,7 @@ export default function BusinessSettings() {
       ],
     },
     {
-      title: "Target Customers",
+      title: "Competitors",
       editBtnUrl: "",
       content: [
         {
@@ -82,7 +82,7 @@ export default function BusinessSettings() {
       ],
     },
     {
-      title: "Geographic Focus",
+      title: "Current Ranking",
       editBtnUrl: "#",
       content: [
         {
@@ -95,7 +95,7 @@ export default function BusinessSettings() {
   return (
     <SidebarLayout breadcrumbPage="Business Settings">
       <div className="border max-w-4xl m-auto rounded-sm">
-        <h1 className="border-b p-4">Business Information</h1>
+        <h1 className="border-b p-4 font-semibold">Business Information</h1>
 
         <div className="p-4">
           <div className="border p-4 mx-4 space-y-6 rounded-sm">
@@ -104,7 +104,7 @@ export default function BusinessSettings() {
                 <div key={index} className="flex items-center justify-between">
                   <div>
                     <h2>{title}</h2>
-                    <h2 className="font-bold text-md">{value}</h2>
+                    <h2 className="font-medium text-md">{value}</h2>
                   </div>
 
                   <Button variant={"link"} asChild>
@@ -133,8 +133,10 @@ export default function BusinessSettings() {
 
                   <div>
                     <ul className="list-disc px-4 space-y-2">
-                      {content.map(({ content }) => (
-                        <li className="text-[15px]">{content}</li>
+                      {content.map(({ content }, index) => (
+                        <li key={content + index} className="text-[15px]">
+                          {content}
+                        </li>
                       ))}
                     </ul>
                   </div>
