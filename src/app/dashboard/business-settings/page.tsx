@@ -95,7 +95,9 @@ export default function BusinessSettings() {
   return (
     <SidebarLayout breadcrumbPage="Business Settings">
       <div className="border max-w-4xl m-auto rounded-sm">
-        <h1 className="border-b p-4 font-semibold">Business Information</h1>
+        <h1 className="border-b p-4 font-semibold custom-h1">
+          Business Information
+        </h1>
 
         <div className="p-4">
           <div className="border p-4 mx-4 space-y-6 rounded-sm">
@@ -103,8 +105,8 @@ export default function BusinessSettings() {
               return (
                 <div key={index} className="flex items-center justify-between">
                   <div>
-                    <h2>{title}</h2>
-                    <h2 className="font-medium text-md">{value}</h2>
+                    <h2 className="custom-h2">{title}</h2>
+                    <h2 className="custom-h2-medium">{value}</h2>
                   </div>
 
                   <Button variant={"link"} asChild>
@@ -123,7 +125,7 @@ export default function BusinessSettings() {
                 <div className="border p-4 mx-4 space-y-2 rounded-sm">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h2 className="font-medium">{title}</h2>
+                      <h2 className="font-medium custom-h2">{title}</h2>
                     </div>
 
                     <Button variant={"link"} asChild>
