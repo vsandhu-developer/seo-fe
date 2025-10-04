@@ -110,7 +110,7 @@ const Navbar = async ({
                 </Button>
               </div>
             ) : (
-              <div>
+              <div className="flex gap-2">
                 <Button asChild variant="outline" size="sm">
                   <Link href={authOptions.login.url}>
                     {authOptions.login.title}

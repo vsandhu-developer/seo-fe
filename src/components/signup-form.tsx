@@ -47,7 +47,7 @@ export function SignupForm({
         });
       }
 
-      // router.push("/login");
+      router.replace("/login");
     } catch (err: any) {
       const message =
         err.response?.data?.message || err.message || "Something went wrong";
