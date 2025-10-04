@@ -23,7 +23,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
           );
 
-          console.log(response);
+          if (response.status === 400) {
+            return null;
+          }
 
           const { user } = response.data;
 

@@ -1,12 +1,9 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   return (
     <div>
-      <Button asChild>
-        <Link href={"/dashboard"}>Dashboard</Link>
-      </Button>
+      <Navbar />
     </div>
   );
 }

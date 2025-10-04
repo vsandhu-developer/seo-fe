@@ -29,6 +29,13 @@ export function LoginForm({
           Enter your email below to login to your account
         </p>
       </div>
+
+      {state?.error && (
+        <div className="bg-destructive/15 text-destructive px-4 py-3 rounded-md text-sm">
+          {state.error}
+        </div>
+      )}
+
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
